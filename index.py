@@ -1,8 +1,12 @@
 from math import radians
+from time import sleep
 
 import calculate
 import interval
 import random
+
+import pygame
+from pygame import mixer
 
 # initialLat = input("What is your latitude ") # 43.669378
 
@@ -17,6 +21,9 @@ initialDistance = calculate.distanceToDuff(radians(initialLat), radians(initialL
 
 print("You are " + str(initialDistance) + " km from the duff" )
 
+pygame.init()
+mixer.init()
+
 def generateRandom():
   randomLat = random.uniform(42, 44)
   randomLon = random.uniform(-78, -80)
@@ -26,8 +33,11 @@ def generateRandom():
   if newDistance < initialDistance:
     print("WARMER")
   elif newDistance > initialDistance:
-    print("COLDER")
+    sound = mixer.Sound("really.wav")
+    sound.play()
+    sleep(5)
   else:
-    print("Keep moving")
+    sound = mixer.sound("really.wav")
+    sound.play()
 
-interval.set_interval(generateRandom, 2)
+interval.set_interval(generateRandom, 5)
