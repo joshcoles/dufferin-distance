@@ -1,7 +1,8 @@
 from math import sin, cos, sqrt, atan2, radians
 
 def distanceToDuff(lat1, lon1):
-     
+    
+# approximate radius of earth in km
   R = 6373.0
   
   duffLat = radians(43.655830)
@@ -20,4 +21,5 @@ def distanceToDuff(lat1, lon1):
 
   x = distance
 
-  print(x)
+  return x
+  
